@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="static/index.css" />
+<!--    <script src="./scripts/chat.js"></script>  -->
+    <title>Scott's Chat App</title>
+  </head>
+  <body>
+    <div id="main">
+      <section class="flex-container">
+        <div id="chatWindow"></div>
+          <!-- change 'localhost' to ec2 public IP -->
+        <form action = "http://localhost:5000/postMessage" method = "post" id="newMessageForm">
+            <p><textarea rows="3" type="text" id="newMessageWindow" placeholder="Type message" required></textarea></p>
+            <p><input type="submit" id="submit" value="Submit"></p>
+        </form>
+      </section>
+    </div>
+  </body>
+</html>
