@@ -73,3 +73,7 @@ body {
   border-radius: 5px;
   color: black;
 }
+
+p.msgObj{
+  color: black;
+}
