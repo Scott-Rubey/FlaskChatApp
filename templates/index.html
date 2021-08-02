@@ -11,7 +11,14 @@
   <body>
     <div id="main">
       <section class="flex-container">
-        <div id="chatWindow"></div>
+        <div id="chatWindow">
+            {% for msgObj in messages %}
+                <p class = msgObj>
+                    {{ msgObj.timestamp }}
+                    <br>{{ msgObj.message }}<br>
+                </p>
+            {% endfor %}
+        </div>
           <!-- change 'localhost' to ec2 public IP -->
         <form action = "http://localhost:5000/" method = "post" id="newMessageForm">
             <p><textarea rows="3" type="text" id="newMessageWindow" placeholder="Type message" required></textarea></p>
