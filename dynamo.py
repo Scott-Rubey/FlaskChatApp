@@ -47,6 +47,7 @@ class dynamo():
 
                 return([[m['timestamp'], m['message']] for m in messages['msgObj']])
 
+            #TODO: implement POST...where?...look at sign.py
             def insertNewMessage(self, timestamp, message):
                 messageObj = {
                     'timestamp': str(datetime.today()),
@@ -59,4 +60,3 @@ class dynamo():
                     return False
 
                 return True
-

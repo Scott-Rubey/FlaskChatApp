@@ -1,9 +1,9 @@
 from flask import Flask
 from flask import render_template
-from .dynamo import dynamo
+from dynamo import dynamo
 
 app = Flask(__name__)
-
+dynamo = dynamo()
 
 @app.route('/')
 def index():  # put application's code here

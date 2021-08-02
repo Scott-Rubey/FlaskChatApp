@@ -1,0 +1,8 @@
+#web framework
+flask
+
+#AWS library
+boto3
+
+#development HTTP server
+gunicorn
