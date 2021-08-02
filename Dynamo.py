@@ -14,20 +14,20 @@ class dynamo():
             self.database.create_table(
                 TableName = 'chatMessages',
                 KeySchema = [
-                    {
-                        'AttributeName': 'message',
-                        'KeyType': 'HASH'
-                    },
+                    #{
+                    #    'AttributeName': 'message',
+                    #    'KeyType': 'HASH'
+                    #},
                     {
                         'AttributeName': 'timestamp',
                         'KeyType': 'RANGE'
                     }
                 ],
                 AttributeDefinitions = [
-                    {
-                        'AttributeName': 'message',
-                        'AttributeType': 'S'
-                    },
+                    #{
+                    #    'AttributeName': 'message',
+                    #    'AttributeType': 'S'
+                    #},
                     {
                         'AttributeName': 'timestamp',
                         'AttributeType': 'S'
@@ -45,7 +45,7 @@ class dynamo():
         except:
             return('Could not connect to database')
 
-        return([[m['timestamp'], m['message']] for m in messages['msgObj']])
+        return ([[m['timestamp'], m['message']] for m in messages['Items']])
 
     #TODO: implement POST...where?...look at sign.py
     def insertNewMessage(self, timestamp, message):
