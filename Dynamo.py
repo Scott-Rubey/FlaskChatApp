@@ -14,20 +14,12 @@ class dynamo():
             self.database.create_table(
                 TableName = 'chatMessages',
                 KeySchema = [
-                    #{
-                    #    'AttributeName': 'message',
-                    #    'KeyType': 'HASH'
-                    #},
                     {
                         'AttributeName': 'timestamp',
                         'KeyType': 'RANGE'
                     }
                 ],
                 AttributeDefinitions = [
-                    #{
-                    #    'AttributeName': 'message',
-                    #    'AttributeType': 'S'
-                    #},
                     {
                         'AttributeName': 'timestamp',
                         'AttributeType': 'S'
@@ -39,6 +31,7 @@ class dynamo():
                 }
             )
 
+
     def getMessages(self):
         try:
             messages = self.table.scan()
@@ -47,7 +40,7 @@ class dynamo():
 
         return ([[m['timestamp'], m['message']] for m in messages['Items']])
 
-    #TODO: implement POST...where?...look at sign.py
+
     def insertNewMessage(self, message):
         messageObj = {
             'timestamp': str(datetime.today()),
