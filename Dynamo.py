@@ -15,21 +15,21 @@ class dynamo():
                 TableName = 'chatMessages',
                 KeySchema = [
                     {
-                        'AttributeName': 'timestamp',
-                        'KeyType': 'RANGE'
-                    },
-                    {
                         'AttributeName': 'message',
                         'KeyType': 'HASH'
+                    },
+                    {
+                        'AttributeName': 'timestamp',
+                        'KeyType': 'RANGE'
                     }
                 ],
                 AttributeDefinitions = [
                     {
-                        'AttributeName': 'timestamp',
+                        'AttributeName': 'message',
                         'AttributeType': 'S'
                     },
                     {
-                        'AttributeName': 'message',
+                        'AttributeName': 'timestamp',
                         'AttributeType': 'S'
                     }
                 ],
@@ -39,24 +39,24 @@ class dynamo():
                 }
             )
 
-            def getMessages(self):
-                try:
-                    messages = self.table.scan()
-                except:
-                    return('Could not connect to database')
+    def getMessages(self):
+        try:
+            messages = self.table.scan()
+        except:
+            return('Could not connect to database')
 
-                return([[m['timestamp'], m['message']] for m in messages['msgObj']])
+        return([[m['timestamp'], m['message']] for m in messages['msgObj']])
 
-            #TODO: implement POST...where?...look at sign.py
-            def insertNewMessage(self, timestamp, message):
-                messageObj = {
-                    'timestamp': str(datetime.today()),
-                    'message': message
-                }
+    #TODO: implement POST...where?...look at sign.py
+    def insertNewMessage(self, timestamp, message):
+        messageObj = {
+            'timestamp': str(datetime.today()),
+            'message': message
+        }
 
-                try:
-                    self.table.put_item(Item = messageObj)
-                except:
-                    return False
+        try:
+            self.table.put_item(Item = messageObj)
+        except:
+            return False
 
-                return True
+        return True
