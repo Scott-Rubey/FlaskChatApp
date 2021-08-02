@@ -15,11 +15,19 @@ class dynamo():
                 TableName = 'chatMessages',
                 KeySchema = [
                     {
+                        'AttributeName': 'name',
+                        'KeyType': 'HASH'
+                    },
+                    {
                         'AttributeName': 'timestamp',
                         'KeyType': 'RANGE'
                     }
                 ],
                 AttributeDefinitions = [
+                    {
+                        'AttributeName': 'name',
+                        'AttributeType': 'S'
+                    },
                     {
                         'AttributeName': 'timestamp',
                         'AttributeType': 'S'
@@ -38,14 +46,14 @@ class dynamo():
         except:
             return('Could not connect to database')
 
-        #sortedMessages = sorted(messages, key = lambda x: datetime.strptime(x[0], '%Y-%m-%d %H:%M:%S.%f'))
-        return ([[m['timestamp'], m['message']] for m in messages['Items']])
+        return ([[m['name'], m['message'], m['timestamp']] for m in messages['Items']])
 
 
-    def insertNewMessage(self, message):
+    def insertNewMessage(self, name, message):
         messageObj = {
-            'timestamp': str(datetime.today()),
-            'message': message
+            'message': message,
+            'name': name,
+            'timestamp': str(datetime.today())
         }
 
         try:
