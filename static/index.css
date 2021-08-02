@@ -32,7 +32,6 @@ body {
 
 #newMessageWindow {
   width: 99%;
-  /*height: 50px;  */
   margin: auto;
   margin-left: 5px;
   margin-top: 20px;
@@ -40,6 +39,7 @@ body {
   position: relative;
   border-radius: 5px;
   color: black;
+  font-size: medium;
 }
 
 #submit {
@@ -67,7 +67,6 @@ body {
   width: 98%;
   margin: auto;
   height: 10vh;
-  /*  border: 1px solid black;  */
   position: relative;
   top: 5px;
   border-radius: 5px;

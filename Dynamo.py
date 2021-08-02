@@ -38,6 +38,7 @@ class dynamo():
         except:
             return('Could not connect to database')
 
+        #sortedMessages = sorted(messages, key = lambda x: datetime.strptime(x[0], '%Y-%m-%d %H:%M:%S.%f'))
         return ([[m['timestamp'], m['message']] for m in messages['Items']])
 
 
