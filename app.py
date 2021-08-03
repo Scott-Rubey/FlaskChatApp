@@ -28,3 +28,8 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug = True)
+
+#TODO: Format login page
+#TODO: See if this works between multiple machines
+#TODO: Implement timed page refresh when DB updates?
+#TODO: Unit tests
