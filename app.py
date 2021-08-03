@@ -1,13 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
 from Dynamo import dynamo
 from datetime import datetime
-import logging
-import sys
 
 app = Flask(__name__)
 dynamo = dynamo()
-logging.basicConfig(filename='logging.log', level=logging.DEBUG,
-                    format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
 userName = ''
 
 @app.route('/', methods = ['GET', 'POST'])
