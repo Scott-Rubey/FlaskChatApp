@@ -28,6 +28,7 @@ body {
   border-radius: 5px;
   color: white;
   overflow: scroll;
+  overflow-y: auto;
 }
 
 #newMessageWindow {
