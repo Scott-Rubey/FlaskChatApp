@@ -4,17 +4,22 @@ from datetime import datetime
 
 application = Flask(__name__)
 application.config['SECRET_KEY'] = 'g_w8Rjd1yspgOEENMvogbg'
+users = {'Scott', 'Laura', 'Erik', 'Rick'}
 dynamo = dynamo()
-#userName = ''
 
 @application.route('/', methods = ['GET', 'POST'])
 def login():
     if request.method == 'GET':
         return render_template('login.html')
     if request.method == 'POST':
-#        global userName
         userName = request.form['name']
-        session['USERNAME'] = userName
+
+        if not userName in users:
+            print("Username invalid")
+            return redirect(url_for('login'))
+        else:
+            session['USERNAME'] = userName
+
         return redirect(url_for('index'))
 
 @application.route('/chat', methods = ['GET', 'POST'])
@@ -24,7 +29,6 @@ def index():
         sortedMessages = sorted(messages, key=lambda x: datetime.strptime(x['timestamp'], '%Y-%m-%d %H:%M:%S.%f'))
         return render_template('index.html', messages = sortedMessages)
     if request.method == 'POST':
-        #name = userName
         name = session.get('USERNAME')
         dynamo.insertNewMessage(request.form['message'], name)
         return redirect(url_for('index'))
