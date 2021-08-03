@@ -7,3 +7,7 @@ as innderHTML to the DOM.
 
 NOTES:  must create new EC2 instance and docker image from scratch
 for changes to take effect!
+
+Known bugs: a user must refresh their page or submit a new message
+in order to receive another user's new post to the database.  Can
+do this using ajax.

@@ -39,7 +39,7 @@ class dynamo():
                 }
             )
 
-
+    #return all messages in the database
     def getMessages(self):
         try:
             messages = self.table.scan()
@@ -47,7 +47,6 @@ class dynamo():
             return('Could not connect to database')
 
         return ([[m['name'], m['message'], m['timestamp']] for m in messages['Items']])
-
 
     def insertNewMessage(self, name, message):
         messageObj = {
@@ -59,6 +58,4 @@ class dynamo():
         try:
             self.table.put_item(Item = messageObj)
         except:
-            return False
-
-        return True
+            print('Could not insert message to database')
