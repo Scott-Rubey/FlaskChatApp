@@ -19,6 +19,14 @@ $(document).ready(function(){
     function refreshChat(){
         $.ajax({
             url: 'chat',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+                if(data.success){
+                    let result = JSON.parse(data)
+                    console.log(result)
+                }
+            }
         }).done(function(result) {
             $('#chatWindow').load();
         });
