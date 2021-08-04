@@ -1,3 +1,8 @@
+Hey all!  Thanks so much for the interview conversations these last few 
+weeks, and for reviewing my little chat app.  Following are some instructions
+and considerations regarding the project.  Please don't hesitate to reach out
+if you have any questions.
+
 Running the application:  This little application is running live --
 simply type the external IP '18.215.124.12' into your browser.  Usernames
 may be anything of your choosing (nothing is authenticated), and >2 users
