@@ -1,20 +1,4 @@
 //reload the database contents once every three seconds
-/*
-$(document).ready(function() {
-    $.ajax({
-        url: "chat",
-        type: "GET",
-        dataType: "json",
-        success: function (data) {
-            if (data.success) {
-                console.log(data)
-                $('#chatWindow').load(data)
-            }
-        },
-        error: function (request, error) {}
-    });
-}, 3000);
-*/
 $(document).ready(function(){
     function refreshChat(){
         $.ajax({
@@ -25,10 +9,10 @@ $(document).ready(function(){
                 if(data.success){
                     let result = JSON.parse(data)
                     console.log(result)
+                    $('#chatWindow').load('#chatWindow');
                 }
-            }
-        }).done(function(result) {
-            $('#chatWindow').load();
+            },
+            error: function(data){console.log(data)}
         });
     }
     window.setInterval(refreshChat, 3000);
