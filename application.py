@@ -18,9 +18,7 @@ def login():
 @application.route('/chat', methods = ['GET', 'POST'])
 def index():
     if request.method == 'GET':
-        messages = [dict(message = msg[0], name = msg[1], timestamp = msg[2]) for msg in dynamo.getMessages()]
-        sortedMessages = sorted(messages, key=lambda x: datetime.strptime(x['timestamp'], '%Y-%m-%d %H:%M:%S.%f'))
-        return render_template('index.html', messages = sortedMessages)
+        return render_template('index.html', messages = getSortedMessages())
 
     if request.method == 'POST':
         name = session.get('USERNAME')
